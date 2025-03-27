@@ -23,7 +23,7 @@ if (EXISTS ${picoVscode})
     include(${picoVscode})
 endif()
 # ====================================================================================
-set(PICO_BOARD pico_w CACHE STRING "Board type")
+set(PICO_BOARD pico_w CACHE STRING "pico_w")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
@@ -35,7 +35,13 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Aplicacao_Embarcados Aplicacao_Embarcados.c )
+add_executable(
+    Aplicacao_Embarcados 
+
+    #Incluir aqui os arquivos .c
+
+    Aplicacao_Embarcados.c 
+)
 
 pico_set_program_name(Aplicacao_Embarcados "Aplicacao_Embarcados")
 pico_set_program_version(Aplicacao_Embarcados "0.1")
@@ -46,17 +52,26 @@ pico_enable_stdio_usb(Aplicacao_Embarcados 0)
 
 # Add the standard library to the build
 target_link_libraries(Aplicacao_Embarcados
-        pico_stdlib)
+    hardware_gpio
+    hardware_adc
+    hardware_pwm
+    hardware_i2c
+    pico_stdlib
+    hardware_timer
+)
 
 # Add the standard include files to the build
-target_include_directories(Aplicacao_Embarcados PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+target_include_directories(
+    Aplicacao_Embarcados PRIVATE inc
+
+    #Icluir aqui os caminhas dos diretorios dos inc sem os arquivos
 )
 
 # Add any user requested libraries
-target_link_libraries(Aplicacao_Embarcados 
+target_link_libraries(
+    Aplicacao_Embarcados 
         
-        )
+)
 
 pico_add_extra_outputs(Aplicacao_Embarcados)
 
