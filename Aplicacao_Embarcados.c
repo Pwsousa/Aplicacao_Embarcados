@@ -60,6 +60,7 @@ void drawX(int cell_row, int cell_col);
 void drawO(int cell_row, int cell_col);
 void draw_moves(void);
 void update_board_screen(int current_player);
+void wait_for_start(void);
 int check_win(void);
 int board_full(void);
 
@@ -249,6 +250,16 @@ int board_full(void) {
                 return 0;
     return 1;
 }
+void wait_for_start(void) {
+    // Aguarda até que o botão esteja pressionado (lógica invertida: retorna 0 quando pressionado)
+    while(gpio_get(BUTTON_JOYSTICK)) {
+        delay_ms(50);
+    }
+    // Aguarda o botão ser liberado para evitar múltiplas confirmações
+    while(!gpio_get(BUTTON_JOYSTICK)) {
+        delay_ms(50);
+    }
+}
 
 /******************************* MAIN *************************************/
 int main(void) {
@@ -261,10 +272,7 @@ int main(void) {
     // Seleção de modo via botões A e B com switch-case
     mode = menu_selection();
     
-    // Se modo 1 for selecionado, exibe aviso e utiliza o modo 2 (exemplo)
-    if (mode == 1) {
-        printf("Modo 1 Jogador nao implementado. Usando modo 2 Jogador.\n");
-    }
+    wait_for_start();
     
     clear_board();
     sel_row = 1;
