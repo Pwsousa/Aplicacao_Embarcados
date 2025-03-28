@@ -277,16 +277,16 @@ int main(void) {
         
         joy = get_joystick_direction();
         switch (joy) {
-            case JOY_UP:
+            case JOY_RIGHT:
                 if (sel_row > 0) sel_row--;
                 break;
-            case JOY_DOWN:
+            case JOY_LEFT:
                 if (sel_row < 2) sel_row++;
                 break;
-            case JOY_LEFT:
+            case JOY_UP:
                 if (sel_col > 0) sel_col--;
                 break;
-            case JOY_RIGHT:
+            case JOY_DOWN:
                 if (sel_col < 2) sel_col++;
                 break;
             case JOY_SELECT:
