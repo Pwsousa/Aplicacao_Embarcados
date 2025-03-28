@@ -39,7 +39,9 @@ add_executable(
     Aplicacao_Embarcados 
 
     #Incluir aqui os arquivos .c
-
+    Sistemas_Embarcados/display/src/ssd_1306.c
+    Sistemas_Embarcados/display/src/ssd_1306_font.c
+    Sistemas_Embarcados/joystick/src/joystick.c
     Aplicacao_Embarcados.c 
 )
 
