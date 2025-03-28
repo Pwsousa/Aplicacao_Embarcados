@@ -85,6 +85,7 @@ int get_joystick_direction(void) {
     if (x > threshold_high) return JOY_RIGHT;
     if (y < threshold_low) return JOY_UP;
     if (y > threshold_high) return JOY_DOWN;
+    if (!gpio_get(BUTTON_JOYSTICK)) return JOY_SELECT;
     return JOY_NONE;
 }
 
@@ -298,26 +299,39 @@ int main(void) {
                 if (sel_col < 2) sel_col++;
                 break;
             case JOY_SELECT:
+            
+                    // Se a célula está vazia, marca-a e bloqueia para edição futura
                 if (board[sel_row][sel_col] == ' ') {
                     board[sel_row][sel_col] = (current_player == 0) ? 'X' : 'O';
+                    
+                    // Verifica se houve vitória
                     if (check_win()) {
                         update_board_screen(current_player);
                         printf("Jogador %c venceu!\n", (current_player == 0) ? 'X' : 'O');
                         return 0;
                     }
+                    // Verifica se o tabuleiro está cheio (empate)
                     if (board_full()) {
                         update_board_screen(current_player);
                         printf("Empate!\n");
                         return 0;
                     }
+                    
+                    // Passa a vez para o outro jogador
                     current_player = 1 - current_player;
+                    
+                    // Opcional: reposiciona o cursor para uma célula vazia, por exemplo, para o centro
                     sel_row = 1;
                     sel_col = 1;
                 }
+                // Se a célula já estiver marcada, ignora a ação (não permite edição)
                 break;
-            default:
-                break;
-        }
+
+                default:
+                    
+                    break;
+                }
+        
     }
     
     return 0;
