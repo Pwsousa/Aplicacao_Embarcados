@@ -8,7 +8,6 @@
 
 - [Introdução](#-introdução)
 - [Fluxograma do programa](#-fluxograma-do-programa)
-- [Diagrama Lógico](#-diagrama-lógico)
 - [Descrição do Fluxo](#-descrição-do-fluxo)
   - [Inicialização dos Periféricos](#-inicialização-dos-periféricos)
   - [Teste Inicial no Display](#-teste-inicial-no-display)
@@ -117,53 +116,6 @@ Com uma estrutura bem organizada e documentação clara, este repositório é id
 ```
 
 Aqui está um diagrama lógico para o programa descrito no código. Ele representa o fluxo principal do programa, desde a inicialização até a seleção de um jogo no menu.
-
----
-
-# 📋 Diagrama Lógico
-
-```plaintext
-+-----------------------------+
-|         Início              |
-+-----------------------------+
-            |
-            v
-+-----------------------------+
-| Inicializa Periféricos      |
-| - stdio_init_all()          |
-| - ssd_1306_init()           |
-| - button_init()             |
-| - Joystick_Init(&js)        |
-+-----------------------------+
-            |
-            v
-+-----------------------------+
-| Limpa Tela e Exibe Teste    |
-| - ssd_1306_fill(black)      |
-| - ssd_1306_draw_circle()    |
-| - ssd_1306_up_date_screen() |
-+-----------------------------+
-            |
-            v
-+-----------------------------+
-| Exibe Menu                  |
-| - show_menu(&js, game_names)|
-+-----------------------------+
-            |
-            v
-+-----------------------------+
-| Seleciona Jogo              |
-| switch(game)                |
-| - Caso 0: Jogo da Velha     |
-| - Caso 1: Snake (não usado) |
-| - Caso 2: Sequência Correta |
-+-----------------------------+
-            |
-            v
-+-----------------------------+
-|         Fim                 |
-+-----------------------------+
-```
 
 ---
 
