@@ -59,6 +59,7 @@
         "jogo_da_velha.h": "c",
         "i2c.h": "c",
         "time.h": "c",
-        "snake_game.h": "c"
+        "snake_game.h": "c",
+        "led_sequence_game.h": "c"
     }
 }

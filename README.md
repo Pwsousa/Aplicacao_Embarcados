@@ -20,7 +20,10 @@
   - [Botões](#-botões)
   - [Matriz de LEDs](#-matriz-de-leds)
 - [Notas](#-notas)
+- [Lógicas dos Jogos](#-lógicas-dos-jogos)
 - [Contribuintes](#-contribuintes)
+
+---
 
 # 📌 Introdução
 
@@ -40,13 +43,14 @@ Com uma estrutura bem organizada e documentação clara, este repositório é id
 ## ✨ Structure
 
 ```txt
-c:\Users\Lucas Guilherme\Documents\Raspberry Pi Pico\MODULO03\projeto_revisao_lib
+## Estrutura dos Diretórios
+
+```txt
 ├── Aplication
 │   ├── inc
 │   │   ├── button.h
 │   │   ├── joystick.h
 │   │   ├── ledMatrix.h
-│   │   ├── examples.h
 │   │   └── ws2818b.pio.h
 │   ├── src
 │   │   ├── button
@@ -56,13 +60,14 @@ c:\Users\Lucas Guilherme\Documents\Raspberry Pi Pico\MODULO03\projeto_revisao_li
 │   │   ├── ledMatrix
 │   │   │   └── ledMatrix.c
 │   │   ├── games
-│   │   │   └── jogo_da_velha.c
+│   │   │   ├── jogo_da_velha.c
+│   │   │   └── snake_game.c
 │   │   └── main.c
-│   └── ws2818b.pio
+│   └── [ws2818b.pio](http://_vscodecontentref_/0)
 ├── img
 │   └── virtus-cc.png
-├── README.md
-└── CMakeLists.txt
+├── [README.md](http://_vscodecontentref_/1)
+└── [CMakeLists.txt](http://_vscodecontentref_/2)
 ```
 
 # 📋 Fluxograma do programa
@@ -100,7 +105,7 @@ c:\Users\Lucas Guilherme\Documents\Raspberry Pi Pico\MODULO03\projeto_revisao_li
 | Seleciona Jogo              |
 | switch(game)                |
 | - Caso 0: Jogo da Velha     |
-| - Caso 1: Snake (não usado) |
+| - Caso 1: Snake             |
 | - Caso 2: Sequência Correta |
 +-----------------------------+
             |
@@ -119,7 +124,7 @@ Aqui está um diagrama lógico para o programa descrito no código. Ele represen
 
 ```plaintext
 +-----------------------------+
-|         Início             |
+|         Início              |
 +-----------------------------+
             |
             v
@@ -306,7 +311,36 @@ _Melhoria_: Definir macros/definições para a dimensão da matriz e índices m�
 
 ---
 
-# 👥 Contribuintes
+# 🎮 Lógicas dos Jogos
+
+## Jogo da Velha
+- **Descrição:**  
+  O jogo da velha é implementado para ser jogado utilizando o joystick e o display OLED.  
+- **Fluxo:**  
+  1. O jogo exibe um tabuleiro na tela.  
+  2. Os jogadores posicionam seu cursor e selecionam a célula desejada com o botão do joystick.  
+  3. A lógica verifica se a jogada é válida e atualiza o tabuleiro.  
+  4. O jogo termina quando há vitória ou empate.
+
+## Sequência Correta
+- **Descrição:**  
+  Neste jogo, uma matriz de LEDs acende em determinada sequência que o jogador deve reproduzir utilizando o joystick e botões.  
+- **Fluxo:**  
+  1. Inicialmente, um único LED é aceso na matriz.  
+  2. O jogador deve selecionar o LED correto usando o joystick e os botões (A para selecionar, B para apagar).  
+  3. Se o jogador acertar, a sequência se torna maior (outros LEDs são acesos).  
+  4. O jogo continua até que o jogador complete a sequência ou erre, terminando a partida.
+
+## Snake (Cobrinha)
+- **Descrição:**  
+  O jogo da cobrinha é exibido no display OLED. O jogador controla a cobrinha por meio do joystick, com o objetivo de comer o fruto e crescer.  
+- **Fluxo:**  
+  1. A cobrinha se move dentro de um retângulo seguro delimitado pelo display.  
+  2. A direção é controlada pelo joystick e não permite reversão imediata para evitar colisões.  
+  3. Ao comer o fruto, a cobrinha cresce; ao colidir com o próprio corpo, ela diminui em um segmento.  
+  4. Se a cobrinha ultrapassar os limites do retângulo ou colidir incontroladamente, o jogo termina e é exibida uma mensagem de "Game Over!", seguida de um prompt para que o jogador decida se deseja jogar novamente ou retornar à tela inicial.
+
+  # 👥 Contribuintes
 
 ### *Lucas Guilherme*
 ### *Pedro Wilson*

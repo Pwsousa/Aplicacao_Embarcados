@@ -1,6 +1,7 @@
 /***********************************| includes| ***************************/
 #include "../Aplication/inc/led_sequence_game.h"
 
+/************************| funcoes |**************************************/
 /**
  * @brief Moves a colored rectangle across an LED matrix.
  * 
