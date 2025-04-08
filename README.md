@@ -137,8 +137,8 @@ Aqui está um diagrama lógico para o programa descrito no código. Ele represen
 5. **Seleção do Jogo**:
    - Com base na opção selecionada no menu, o programa executa o jogo correspondente:
      - **Caso 0**: Inicia o "Jogo da Velha" chamando a função `play_tic_tac_toe()`.
-     - **Caso 1**: Placeholder para o jogo "Snake" (não implementado).
-     - **Caso 2**: Placeholder para o jogo "Sequência Correta" (não implementado).
+     - **Caso 1**: Placeholder para o jogo "Snake" `play_snake_game(&js, dificuldade)`.
+     - **Caso 2**: Placeholder para o jogo "Sequência Correta" `play_led_sequence_game(&js)`.
 
 6. **Fim**:
    - Após a execução do jogo selecionado, o programa termina.
